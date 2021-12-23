@@ -77,10 +77,32 @@ export const SearchFieldContainer = () => {
     }
   };
 
+  const _onFocus = () => {
+    setShowList(true);
+  };
+
+  const _onBlur = (e) => {
+    setShowList(false);
+  };
+
+  useEffect(() => {
+    // This will load the default value's search results after the view has
+    // been rendered
+    _handleChangeText(stateText);
+    return () => {
+      _abortRequests();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <div className="search-field-container">
-        <InputBoxComponent handleChange={_handleChangeText} />
+        <InputBoxComponent
+          onBlur={_onBlur}
+          onFocus={_onFocus}
+          handleChange={_handleChangeText}
+        />
       </div>
     </>
   );
