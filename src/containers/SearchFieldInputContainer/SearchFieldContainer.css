@@ -1,0 +1,41 @@
+body {
+  margin: 20px 5%;
+}
+
+.search-field-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #00000060;
+  border-radius: 5px;
+}
+
+.input-box {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 10px;
+  font-size: 1.2rem;
+}
+
+.searchIcon {
+  width: 15px;
+  height: 15px;
+  padding-left: 10px;
+  color: #00000060;
+}
+
+.listStyle {
+  border: 1px solid #00000060;
+  border-radius: 0px 0px 5px 5px;
+  margin-top: -1px;
+}
+
+::placeholder {
+  color: #00000060;
+}
+
+.listStyle a {
+  text-decoration: none;
+  color: #000;
+}
