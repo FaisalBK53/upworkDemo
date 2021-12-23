@@ -1,7 +1,10 @@
-import { React, useMemo, useState } from 'react';
+import { React, useMemo, useState, useEffect } from 'react';
 
+import './SearchFieldContainer.css';
+import { SearchIcon } from '../../assets';
 import { CONFIG } from '../../api/config';
 import { InputBoxComponent } from '../../components';
+import GithubUserList from '../../components/GithubUserList/GithubUserList';
 
 export const SearchFieldContainer = () => {
   let _requests = [];
@@ -44,13 +47,7 @@ export const SearchFieldContainer = () => {
           );
         }
       };
-      request.open(
-        'GET',
-        request.open(
-          'GET',
-          `${CONFIG.API_URL}search/users?q=${text}&per_page=5`
-        )
-      );
+      request.open('GET', `${CONFIG.API_URL}search/users?q=${text}&per_page=5`);
       request.setRequestHeader('Accept', 'application/vnd.github.v3+json');
       request.setRequestHeader(
         'Authorization',
@@ -71,7 +68,7 @@ export const SearchFieldContainer = () => {
   };
 
   const _handleChangeText = (e) => {
-    const text = e.target.value;
+    const text = e?.target?.value || e;
     if (text !== ' ' && stateText.length >= 0) {
       _onChangeText(text);
     }
@@ -88,7 +85,7 @@ export const SearchFieldContainer = () => {
   useEffect(() => {
     // This will load the default value's search results after the view has
     // been rendered
-    _handleChangeText(stateText);
+    // _handleChangeText(stateText);
     return () => {
       _abortRequests();
     };
@@ -98,12 +95,18 @@ export const SearchFieldContainer = () => {
   return (
     <>
       <div className="search-field-container">
+        <img src={SearchIcon} alt="" className="searchIcon" />
         <InputBoxComponent
           onBlur={_onBlur}
           onFocus={_onFocus}
+          className={'input-box'}
           handleChange={_handleChangeText}
+          placeholder={'Search...'}
         />
       </div>
+      {userData.length > 0 ? (
+        <GithubUserList list={'listStyle'} item={userData} />
+      ) : null}
     </>
   );
 };

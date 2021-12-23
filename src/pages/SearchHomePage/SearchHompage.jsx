@@ -1,10 +1,12 @@
-import { React } from "react";
-import { SearchFieldContainer } from "../../containers";
+import { React } from 'react';
+
+import './SearchHomePage.css';
+import { SearchFieldContainer } from '../../containers';
 
 export const SearchHomePage = () => {
   return (
     <>
-      <h1> Search Users from GitHub </h1>
+      <h1 className="header"> GitHub Users </h1>
       <SearchFieldContainer />
     </>
   );
