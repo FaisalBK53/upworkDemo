@@ -20,6 +20,8 @@ export const SearchFieldContainer = () => {
     _requests = [];
   };
 
+  console.log(_requests);
+
   const _request = (text) => {
     _abortRequests();
     if (text) {
