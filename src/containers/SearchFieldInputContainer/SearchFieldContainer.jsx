@@ -85,7 +85,7 @@ export const SearchFieldContainer = () => {
   useEffect(() => {
     // This will load the default value's search results after the view has
     // been rendered
-    // _handleChangeText(stateText);
+    _handleChangeText(stateText);
     return () => {
       _abortRequests();
     };

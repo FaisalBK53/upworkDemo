@@ -1,4 +1,4 @@
 export const CONFIG = {
   API_URL: 'https://api.github.com/',
-  Github_token: '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',
+  Github_token: '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',
 };
