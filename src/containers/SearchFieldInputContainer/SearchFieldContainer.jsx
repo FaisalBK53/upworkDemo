@@ -12,6 +12,11 @@ export const SearchFieldContainer = () => {
   const [stateText, setStateText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const _abortRequests = () => {
+    _requests.map((i) => i.abort());
+    _requests = [];
+  };
+
   const _request = (text) => {
     _abortRequests();
     if (text) {
